@@ -1,0 +1,21 @@
+name: Deploy chemistry_game_1 to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deploy to GitHub Pages (gh-pages)
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          publish_dir: ./chemistry_game_1
+          publish_branch: gh-pages
+          allow_empty_commit: true
+          token: ${{ secrets.GITHUB_TOKEN }}
