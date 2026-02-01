@@ -1,4 +1,4 @@
-name: Deploy chemistry_game_1 to GitHub Pages
+name: Deploy index file to GitHub Pages
 
 on:
   push:
@@ -15,7 +15,7 @@ jobs:
       - name: Deploy to GitHub Pages (gh-pages)
         uses: peaceiris/actions-gh-pages@v3
         with:
-          publish_dir: ./chemistry_game_1
+          publish_dir: ./index.html
           publish_branch: gh-pages
           allow_empty_commit: true
           token: ${{ secrets.GITHUB_TOKEN }}
