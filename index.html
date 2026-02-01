@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Website</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    * {
+      font-family: 'Outfit', sans-serif;
+    }
+    
+    .gradient-bg {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    }
+    
+    .card-gradient {
+      background: linear-gradient(145deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 100%);
+      backdrop-filter: blur(20px);
+    }
+    
+    .link-btn {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .link-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s;
+    }
+    
+    .link-btn:hover::before {
+      left: 100%;
+    }
+    
+    .link-btn:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 20px 40px -10px rgba(0,0,0,0.25);
+    }
+    
+    .avatar-ring {
+      background: linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+      padding: 4px;
+      border-radius: 50%;
+      animation: rotate-gradient 3s linear infinite;
+    }
+    
+    @keyframes rotate-gradient {
+      0% { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(360deg); }
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .float-animation {
+      animation: float 4s ease-in-out infinite;
+    }
+    
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.6;
+      animation: blob-move 8s ease-in-out infinite;
+    }
+    
+    @keyframes blob-move {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -20px) scale(1.1); }
+      66% { transform: translate(-20px, 20px) scale(0.9); }
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full gradient-bg overflow-auto">
+  <div class="min-h-full w-full relative flex items-center justify-center p-6"><!-- Animated blobs -->
+   <div class="blob w-72 h-72 bg-yellow-300 top-10 left-10" style="animation-delay: 0s;"></div>
+   <div class="blob w-96 h-96 bg-pink-400 bottom-10 right-10" style="animation-delay: 2s;"></div>
+   <div class="blob w-64 h-64 bg-cyan-300 top-1/2 left-1/4" style="animation-delay: 4s;"></div><!-- Main card -->
+   <div class="card-gradient rounded-3xl shadow-2xl p-8 md:p-12 max-w-md w-full relative z-10 float-animation"><!-- Avatar -->
+    <div class="flex justify-center mb-6">
+     <div class="avatar-ring">
+      <div class="w-28 h-28 rounded-full bg-gradient-to-br from-violet-500 via-purple-500 to-fuchsia-500 flex items-center justify-center"><span id="avatar-initial" class="text-4xl font-bold text-white">FS</span>
+      </div>
+     </div>
+    </div><!-- Name & Tagline -->
+    <div class="text-center mb-8">
+     <h1 id="user-name" class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-600 bg-clip-text text-transparent mb-3">Welcome to Fredrick's Space</h1>
+     <p id="caption" class="text-gray-600 text-base mb-2 font-medium">Your hub for creativity and innovation</p>
+     <p id="tagline" class="text-gray-500 text-lg font-light">Creator • Developer • Dreamer</p>
+    </div><!-- Links -->
+    <div id="links-container" class="space-y-4"><a id="link-1" href="#" target="_blank" rel="noopener noreferrer" class="link-btn block w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-violet-500 to-purple-600 text-white text-center font-medium shadow-lg"> <span class="link-text">🎨 Portfolio</span> </a> <a id="link-2" href="#" target="_blank" rel="noopener noreferrer" class="link-btn block w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-fuchsia-500 to-pink-500 text-white text-center font-medium shadow-lg"> <span class="link-text">💻 GitHub</span> </a> <a id="link-3" href="#" target="_blank" rel="noopener noreferrer" class="link-btn block w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-center font-medium shadow-lg"> <span class="link-text">💼 LinkedIn</span> </a> <a id="link-4" href="#" target="_blank" rel="noopener noreferrer" class="link-btn block w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-amber-400 to-orange-500 text-white text-center font-medium shadow-lg"> <span class="link-text">✉️ Contact</span> </a> <a id="link-5" href="#" target="_blank" rel="noopener noreferrer" class="link-btn block w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white text-center font-medium shadow-lg"> <span class="link-text">📱 Apps</span> </a>
+    </div><!-- Footer -->
+    <div class="mt-8 text-center">
+     <p class="text-gray-400 text-sm">✨ Let's connect and create something amazing ✨</p>
+    </div>
+   </div>
+  </div>
+  <script>
+    const defaultConfig = {
+      user_name: "Welcome to Fredrick's Space",
+      caption: "Your hub for creativity and innovation",
+      tagline: "Creator • Developer • Dreamer",
+      link_1_text: "🎨 Portfolio",
+      link_1_url: "#",
+      link_2_text: "💻 GitHub",
+      link_2_url: "#",
+      link_3_text: "💼 LinkedIn",
+      link_3_url: "#",
+      link_4_text: "✉️ Contact",
+      link_4_url: "#",
+      link_5_text: "📱 Apps",
+      link_5_url: "#",
+      background_color: "#667eea",
+      card_color: "#ffffff",
+      text_color: "#374151",
+      primary_action_color: "#8b5cf6",
+      secondary_action_color: "#ec4899",
+      font_family: "Outfit",
+      font_size: 16
+    };
+
+    async function onConfigChange(config) {
+      const userName = config.user_name || defaultConfig.user_name;
+      const caption = config.caption || defaultConfig.caption;
+      const tagline = config.tagline || defaultConfig.tagline;
+      
+      // Update name and avatar
+      document.getElementById('user-name').textContent = userName;
+      document.getElementById('avatar-initial').textContent = userName.charAt(0).toUpperCase();
+      document.getElementById('caption').textContent = caption;
+      document.getElementById('tagline').textContent = tagline;
+      
+      // Update links
+      const links = [
+        { id: 'link-1', text: config.link_1_text, url: config.link_1_url },
+        { id: 'link-2', text: config.link_2_text, url: config.link_2_url },
+        { id: 'link-3', text: config.link_3_text, url: config.link_3_url },
+        { id: 'link-4', text: config.link_4_text, url: config.link_4_url },
+        { id: 'link-5', text: config.link_5_text, url: config.link_5_url }
+      ];
+      
+      links.forEach((link, index) => {
+        const el = document.getElementById(link.id);
+        const textEl = el.querySelector('.link-text');
+        const defaultLink = defaultConfig[`link_${index + 1}_text`];
+        const defaultUrl = defaultConfig[`link_${index + 1}_url`];
+        
+        textEl.textContent = link.text || defaultLink;
+        el.href = link.url || defaultUrl;
+        
+        // Hide link if no text
+        if (!link.text && !defaultLink) {
+          el.style.display = 'none';
+        } else {
+          el.style.display = 'block';
+        }
+      });
+      
+      // Apply colors
+      const bgColor = config.background_color || defaultConfig.background_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      
+      document.body.style.background = `linear-gradient(135deg, ${bgColor} 0%, #764ba2 50%, #f093fb 100%)`;
+      document.getElementById('tagline').style.color = textColor;
+      
+      // Apply font
+      const fontFamily = config.font_family || defaultConfig.font_family;
+      const fontSize = config.font_size || defaultConfig.font_size;
+      
+      document.body.style.fontFamily = `${fontFamily}, sans-serif`;
+      document.getElementById('user-name').style.fontSize = `${fontSize * 2}px`;
+      document.getElementById('tagline').style.fontSize = `${fontSize * 1.125}px`;
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => { config.background_color = value; window.elementSdk.setConfig({ background_color: value }); }
+          },
+          {
+            get: () => config.card_color || defaultConfig.card_color,
+            set: (value) => { config.card_color = value; window.elementSdk.setConfig({ card_color: value }); }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => { config.text_color = value; window.elementSdk.setConfig({ text_color: value }); }
+          },
+          {
+            get: () => config.primary_action_color || defaultConfig.primary_action_color,
+            set: (value) => { config.primary_action_color = value; window.elementSdk.setConfig({ primary_action_color: value }); }
+          },
+          {
+            get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+            set: (value) => { config.secondary_action_color = value; window.elementSdk.setConfig({ secondary_action_color: value }); }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => config.font_family || defaultConfig.font_family,
+          set: (value) => { config.font_family = value; window.elementSdk.setConfig({ font_family: value }); }
+        },
+        fontSizeable: {
+          get: () => config.font_size || defaultConfig.font_size,
+          set: (value) => { config.font_size = value; window.elementSdk.setConfig({ font_size: value }); }
+        }
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ["user_name", config.user_name || defaultConfig.user_name],
+        ["caption", config.caption || defaultConfig.caption],
+        ["tagline", config.tagline || defaultConfig.tagline],
+        ["link_1_text", config.link_1_text || defaultConfig.link_1_text],
+        ["link_1_url", config.link_1_url || defaultConfig.link_1_url],
+        ["link_2_text", config.link_2_text || defaultConfig.link_2_text],
+        ["link_2_url", config.link_2_url || defaultConfig.link_2_url],
+        ["link_3_text", config.link_3_text || defaultConfig.link_3_text],
+        ["link_3_url", config.link_3_url || defaultConfig.link_3_url],
+        ["link_4_text", config.link_4_text || defaultConfig.link_4_text],
+        ["link_4_url", config.link_4_url || defaultConfig.link_4_url],
+        ["link_5_text", config.link_5_text || defaultConfig.link_5_text],
+        ["link_5_url", config.link_5_url || defaultConfig.link_5_url]
+      ]);
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c726a1d83f95ace',t:'MTc2OTk1OTAzNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
