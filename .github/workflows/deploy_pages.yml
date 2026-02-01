@@ -18,4 +18,4 @@ jobs:
           publish_dir: ./index.html
           publish_branch: gh-pages
           allow_empty_commit: true
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GH_DEPLOY_TOKEN }}
